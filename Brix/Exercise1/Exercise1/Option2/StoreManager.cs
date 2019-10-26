@@ -3,36 +3,35 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Exercise1.Option1
+namespace Exercise1.Option2
 {
     public class StoreManager : IStoreManager, IDisposable
     {
         private readonly ICustomersQueue customersQueue;
-        private Timer enqueueCustomersTimer;
-        private readonly Func<Timer> enqueueCustomerTimerFactory;
+        private readonly SemaphoreSlim maxCashiersSemaphore;
+        private readonly Func<Timer> enqueueTimerFactory;
         private readonly TaskScheduler customerDequeueTaskScheduler;
         private readonly SleepService sleepService;
-        private readonly int maxCashiersCount;
         private readonly int minCashierProcessingTime;
         private readonly int maxCashierProcessingTime;
         private readonly ILogger logger;
         private readonly TaskFactory taskFactory;
-        private readonly CancellationTokenSource tokenSource;
+        private Timer enqueueCustomersTimer;
+        private volatile bool stopped;
         private bool disposedValue = false;
 
-        public StoreManager(ICustomersQueue customersQueue, Func<Timer> enqueueCustomerTimerFactory, TaskScheduler customerDequeueTaskScheduler, 
+        public StoreManager(ICustomersQueue customersQueue, Func<Timer> enqueueTimerFactory, TaskScheduler customerDequeueTaskScheduler,
             SleepService sleepService, int maxCashiersCount, int minCashierProcessingTime, int maxCashierProcessingTime, ILogger logger)
         {
             this.customersQueue = customersQueue;
-            this.enqueueCustomerTimerFactory = enqueueCustomerTimerFactory;
+            this.enqueueTimerFactory = enqueueTimerFactory;
             this.customerDequeueTaskScheduler = customerDequeueTaskScheduler;
             this.sleepService = sleepService;
-            this.maxCashiersCount = maxCashiersCount;
             this.minCashierProcessingTime = minCashierProcessingTime;
             this.maxCashierProcessingTime = maxCashierProcessingTime;
             this.logger = logger;
             this.taskFactory = new TaskFactory(customerDequeueTaskScheduler);
-            this.tokenSource = new CancellationTokenSource();
+            this.maxCashiersSemaphore = new SemaphoreSlim(maxCashiersCount);
         }
 
         #region Static methods
@@ -61,7 +60,9 @@ namespace Exercise1.Option1
 
         public void Stop()
         {
-            tokenSource.Cancel();
+            stopped = true;
+            enqueueCustomersTimer.Dispose();
+            FinishRemainingCustomers();
         }
 
         #endregion
@@ -70,30 +71,45 @@ namespace Exercise1.Option1
 
         private void EnqueueCustomers()
         {
-            enqueueCustomersTimer = enqueueCustomerTimerFactory();
+            stopped = false;
+            enqueueCustomersTimer = enqueueTimerFactory();
         }
 
         private void ProcessCustomers()
         {
-            var token = tokenSource.Token;
-            var rnd = new Random();
+            var rnd = new Random();            
 
-            for (int i = 0; i < maxCashiersCount; i++)
+            while (!stopped)
             {
-                Cashier cashier = new Cashier($"Cashier{i}", sleepService);
-                taskFactory.StartNew(GetProcessCustomerAction(cashier, rnd, token), token);
+                maxCashiersSemaphore.Wait(); // blocking operation
+                ProcessSingleCustomer(rnd);
             }
         }
 
-        private Action GetProcessCustomerAction(Cashier cashier, Random rnd, CancellationToken token)
+        private void FinishRemainingCustomers()
         {
-            return () =>
+            logger.Info("Store was closed. Finishing with the last remaining customers.");
+
+            Random rnd = new Random();
+
+            while (customersQueue.GetCustomersCount() > 0)
             {
+                maxCashiersSemaphore.Wait(); // blocking operation
+                ProcessSingleCustomer(rnd);
+            }
+        }
+
+        private void ProcessSingleCustomer(Random rnd)
+        {
+            Customer customer = customersQueue.DequeueCustomer(); // blocking operation
+
+            int processDurationInSeconds = rnd.Next(minCashierProcessingTime, maxCashierProcessingTime + 1);
+            taskFactory.StartNew(() =>
+            {
+                Cashier cashier = new Cashier($"Cashier-{Thread.CurrentThread.ManagedThreadId}", sleepService);
+
                 try
                 {
-                    Customer customer = customersQueue.DequeueCustomer(); // blocking operation!
-
-                    int processDurationInSeconds = rnd.Next(minCashierProcessingTime, maxCashierProcessingTime + 1);
                     cashier.ProcessCustomer(customer, processDurationInSeconds); // blocking operation!
                     logger.Info($"{cashier.Name} finished processing customer at: {customer.Finished}. Number of waiting customers: {customersQueue.GetCustomersCount()}");
                 }
@@ -103,19 +119,9 @@ namespace Exercise1.Option1
                 }
                 finally
                 {
-                    // I issue a new task instaed of just calling this Action recursively, beacuse it will cause 
-                    // the call stack to chain and eventually to cause an out of memory error.
-                    // The child task is, by deafult, detached from its parent task and therefore will not chain a call stack.
-                    if (!token.IsCancellationRequested)
-                    {
-                        taskFactory.StartNew(GetProcessCustomerAction(cashier, rnd, token), token);
-                    }
-                    else
-                    {
-                        logger.Info($"{cashier.Name} work was cancelled. Stopping.");
-                    }
-                }
-            };
+                    maxCashiersSemaphore.Release();
+                }                
+            });            
         }
 
         #endregion
@@ -128,7 +134,7 @@ namespace Exercise1.Option1
             {
                 if (disposing)
                 {
-                    tokenSource.Dispose();
+                    maxCashiersSemaphore.Dispose();                                       
                 }
 
                 if (enqueueCustomersTimer != null)
@@ -137,14 +143,14 @@ namespace Exercise1.Option1
                     {
                         enqueueCustomersTimer.Dispose();
                     }
-                    catch (Exception) { }
+                    catch (Exception) { }                    
                 }
 
                 disposedValue = true;
             }
         }
 
-         ~StoreManager()
+        ~StoreManager()
         {
             Dispose(false);
         }

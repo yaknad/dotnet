@@ -3,7 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Exercise1.Option1
+namespace Exercise1.Option2
 {
     public class StoreManagerFactory
     {
@@ -14,15 +14,15 @@ namespace Exercise1.Option1
             var dequeueTaskScheduler = GetCustomerDequeueTaskScheduler();
             // Spec was 5 cashiers. These is an optimazation to set the cashiers count by calculation.
             var cashiersCount = GetCashiersCount(customerEnqueueRateInSeconds, minCashierProcessingTime, maxCashierProcessingTime);
-            return new StoreManager(customersQueue, enqueueTimerFactory, dequeueTaskScheduler, new SleepService(), cashiersCount, 
+            return new StoreManager(customersQueue, enqueueTimerFactory, dequeueTaskScheduler, new SleepService(), cashiersCount,
                 minCashierProcessingTime, maxCashierProcessingTime, new Logger());
         }
 
         private Timer GetCustomerEnqueueTimer(CustomersQueue customersQueue, int customerEnqueueRateInSeconds)
         {
-            return new Timer(state => customersQueue.EnqueueCustomer(), 
-                             null, 
-                             0, 
+            return new Timer(state => customersQueue.EnqueueCustomer(),
+                             null,
+                             0,
                              customerEnqueueRateInSeconds * 1000);
         }
 
@@ -35,6 +35,6 @@ namespace Exercise1.Option1
         {
             // REQUIERD in order to make StoreManager class testable (enables to mock the async scheduling and run any required tasks synchronously)
             return Task.Factory.Scheduler;
-        }        
+        }
     }
 }
