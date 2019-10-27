@@ -6,43 +6,50 @@ using System.Threading.Tasks;
 
 namespace Exercise2
 {
-    public static class DataAnalizer
+    public class FileDataAnalizer
     {
-        public static Dictionary<String, List<String>> AnalizeRawData(List<String> lines)
+        private List<string> fileLines;
+        private Dictionary<string, List<string>> analizedFileData;
+
+        public FileDataAnalizer(List<string> fileLines)
         {
-            var analizedLines = new Dictionary<String, List<String>>();
+            this.fileLines = fileLines;
+        }         
 
-            foreach (var line in lines)
+        public void Analize()
+        {
+            analizedFileData = new Dictionary<string, List<string>>();
+            fileLines.ForEach(line =>
             {
-                AnalizeRow(line, analizedLines);
-            }
-
-            return analizedLines;
+                try
+                {
+                    AnalizeRow(line);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception($"Error while analizing line: {line}", e);
+                }                
+            });
         }
 
-        public static IEnumerable<String> SearchInAnalizedData(String searchFor, Dictionary<String, List<String>> analizedData)
+        public List<string> SearchInAnalizedData(string searchFor)
         {
-            var modifiedChars = searchFor.Trim().ToUpper().ToArray();
-            Array.Sort(modifiedChars);
-            var analizedSearchFor = new string(modifiedChars.ToArray());
+            var analizedSearchFor = string.Concat(searchFor.Trim().ToUpper().OrderBy(chr => chr));
 
-            return analizedData.ContainsKey(analizedSearchFor) ? analizedData[analizedSearchFor]
-                                                               : Enumerable.Empty<string>();
+            return analizedFileData.ContainsKey(analizedSearchFor) ? analizedFileData[analizedSearchFor] : new List<string>();
         }
 
-        private static void AnalizeRow(String lineToAnalize, Dictionary<String, List<String>> analizedData)
+        private void AnalizeRow(string lineToAnalize)
         {
-            var modifiedChars = lineToAnalize.Trim().ToUpper().ToArray();
-            Array.Sort(modifiedChars);
-            var analizedLine = new string(modifiedChars.ToArray());
+            var analizedLine = string.Concat(lineToAnalize.Trim().ToUpper().OrderBy(chr => chr));
 
-            if(analizedData.ContainsKey(analizedLine))
+            if(analizedFileData.ContainsKey(analizedLine))
             {
-                analizedData[analizedLine].Add(lineToAnalize);
+                analizedFileData[analizedLine].Add(lineToAnalize);
             }
             else
             {
-                analizedData.Add(analizedLine, new List<String> { lineToAnalize });
+                analizedFileData.Add(analizedLine, new List<string> { lineToAnalize });
             }
         }
     }
