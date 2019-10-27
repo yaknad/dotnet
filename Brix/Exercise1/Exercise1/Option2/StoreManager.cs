@@ -11,7 +11,7 @@ namespace Exercise1.Option2
         private readonly SemaphoreSlim maxCashiersSemaphore;
         private readonly Func<Timer> enqueueTimerFactory;
         private readonly TaskScheduler customerDequeueTaskScheduler;
-        private readonly SleepService sleepService;
+        private readonly ISleepService sleepService;
         private readonly int minCashierProcessingTime;
         private readonly int maxCashierProcessingTime;
         private readonly ILogger logger;
@@ -21,7 +21,7 @@ namespace Exercise1.Option2
         private bool disposedValue = false;
 
         public StoreManager(ICustomersQueue customersQueue, Func<Timer> enqueueTimerFactory, TaskScheduler customerDequeueTaskScheduler,
-            SleepService sleepService, int maxCashiersCount, int minCashierProcessingTime, int maxCashierProcessingTime, ILogger logger)
+            ISleepService sleepService, int maxCashiersCount, int minCashierProcessingTime, int maxCashierProcessingTime, ILogger logger)
         {
             this.customersQueue = customersQueue;
             this.enqueueTimerFactory = enqueueTimerFactory;
@@ -62,6 +62,7 @@ namespace Exercise1.Option2
         {
             stopped = true;
             enqueueCustomersTimer.Dispose();
+            enqueueCustomersTimer = null;
             FinishRemainingCustomers();
         }
 
@@ -77,12 +78,10 @@ namespace Exercise1.Option2
 
         private void ProcessCustomers()
         {
-            var rnd = new Random();            
-
             while (!stopped)
             {
                 maxCashiersSemaphore.Wait(); // blocking operation
-                ProcessSingleCustomer(rnd);
+                ProcessSingleCustomer();
             }
         }
 
@@ -90,23 +89,22 @@ namespace Exercise1.Option2
         {
             logger.Info("Store was closed. Finishing with the last remaining customers.");
 
-            Random rnd = new Random();
-
             while (customersQueue.GetCustomersCount() > 0)
             {
                 maxCashiersSemaphore.Wait(); // blocking operation
-                ProcessSingleCustomer(rnd);
+                ProcessSingleCustomer();
             }
         }
 
-        private void ProcessSingleCustomer(Random rnd)
+        private void ProcessSingleCustomer()
         {
-            Customer customer = customersQueue.DequeueCustomer(); // blocking operation
+            var customer = customersQueue.DequeueCustomer(); // blocking operation
+            var rnd = new Random();
+            var processDurationInSeconds = rnd.Next(minCashierProcessingTime, maxCashierProcessingTime + 1);
 
-            int processDurationInSeconds = rnd.Next(minCashierProcessingTime, maxCashierProcessingTime + 1);
             taskFactory.StartNew(() =>
             {
-                Cashier cashier = new Cashier($"Cashier-{Thread.CurrentThread.ManagedThreadId}", sleepService);
+                var cashier = new Cashier($"Cashier-{Thread.CurrentThread.ManagedThreadId}", sleepService);
 
                 try
                 {

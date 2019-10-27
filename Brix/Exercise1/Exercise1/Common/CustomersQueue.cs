@@ -19,19 +19,18 @@ namespace Exercise1.Common
         public void EnqueueCustomer()
         {
             var customer = new Customer { Enqueued = DateTime.Now };
-            // TODO: handle / wrap exceptions
             customers.Add(customer);
         }
 
         public Customer DequeueCustomer()
         {
-            // TODO: handle / wrap exceptions
-            return customers.Take();
+            var customer = customers.Take();
+            customer.Dequeued = DateTime.Now;
+            return customer;
         }
 
         public int GetCustomersCount()
         {
-            // TODO: handle / wrap exceptions
             return customers.Count;
         }
     }

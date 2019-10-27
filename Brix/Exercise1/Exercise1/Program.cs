@@ -10,8 +10,8 @@ namespace Exercise1
         {
             Console.WriteLine("************** Store is now open! **************");
 
-            //RunOption1().Wait();
-            RunOption2();
+            RunOption1().Wait();
+            //RunOption2();
             
             Console.ReadKey();           
         }

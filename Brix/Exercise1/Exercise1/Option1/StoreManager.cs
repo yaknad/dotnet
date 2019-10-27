@@ -11,28 +11,28 @@ namespace Exercise1.Option1
         private Timer enqueueCustomersTimer;
         private readonly Func<Timer> enqueueCustomerTimerFactory;
         private readonly TaskScheduler customerDequeueTaskScheduler;
-        private readonly SleepService sleepService;
-        private readonly int maxCashiersCount;
+        private readonly ISleepService sleepService;
+        private readonly int cashiersCount;
         private readonly int minCashierProcessingTime;
         private readonly int maxCashierProcessingTime;
         private readonly ILogger logger;
         private readonly TaskFactory taskFactory;
-        private readonly CancellationTokenSource tokenSource;
+        private readonly CancellationTokenSource cancellationTokenSource;
         private bool disposedValue = false;
 
         public StoreManager(ICustomersQueue customersQueue, Func<Timer> enqueueCustomerTimerFactory, TaskScheduler customerDequeueTaskScheduler, 
-            SleepService sleepService, int maxCashiersCount, int minCashierProcessingTime, int maxCashierProcessingTime, ILogger logger)
+            ISleepService sleepService, int maxCashiersCount, int minCashierProcessingTime, int maxCashierProcessingTime, ILogger logger)
         {
             this.customersQueue = customersQueue;
             this.enqueueCustomerTimerFactory = enqueueCustomerTimerFactory;
             this.customerDequeueTaskScheduler = customerDequeueTaskScheduler;
             this.sleepService = sleepService;
-            this.maxCashiersCount = maxCashiersCount;
+            this.cashiersCount = maxCashiersCount;
             this.minCashierProcessingTime = minCashierProcessingTime;
             this.maxCashierProcessingTime = maxCashierProcessingTime;
             this.logger = logger;
             this.taskFactory = new TaskFactory(customerDequeueTaskScheduler);
-            this.tokenSource = new CancellationTokenSource();
+            this.cancellationTokenSource = new CancellationTokenSource();
         }
 
         #region Static methods
@@ -61,7 +61,9 @@ namespace Exercise1.Option1
 
         public void Stop()
         {
-            tokenSource.Cancel();
+            cancellationTokenSource.Cancel();
+            enqueueCustomersTimer.Dispose();
+            enqueueCustomersTimer = null;
         }
 
         #endregion
@@ -75,25 +77,24 @@ namespace Exercise1.Option1
 
         private void ProcessCustomers()
         {
-            var token = tokenSource.Token;
-            var rnd = new Random();
+            var cancellationToken = cancellationTokenSource.Token;
 
-            for (int i = 0; i < maxCashiersCount; i++)
+            for (int i = 0; i < cashiersCount; i++)
             {
-                Cashier cashier = new Cashier($"Cashier{i}", sleepService);
-                taskFactory.StartNew(GetProcessCustomerAction(cashier, rnd, token), token);
+                var cashier = new Cashier($"Cashier{i}", sleepService);
+                taskFactory.StartNew(GetProcessCustomerAction(cashier, cancellationToken), cancellationToken);
             }
         }
 
-        private Action GetProcessCustomerAction(Cashier cashier, Random rnd, CancellationToken token)
+        private Action GetProcessCustomerAction(Cashier cashier, CancellationToken token)
         {
             return () =>
             {
                 try
                 {
-                    Customer customer = customersQueue.DequeueCustomer(); // blocking operation!
-
-                    int processDurationInSeconds = rnd.Next(minCashierProcessingTime, maxCashierProcessingTime + 1);
+                    var customer = customersQueue.DequeueCustomer(); // blocking operation!
+                    var rnd = new Random();
+                    var processDurationInSeconds = rnd.Next(minCashierProcessingTime, maxCashierProcessingTime + 1);
                     cashier.ProcessCustomer(customer, processDurationInSeconds); // blocking operation!
                     logger.Info($"{cashier.Name} finished processing customer at: {customer.Finished}. Number of waiting customers: {customersQueue.GetCustomersCount()}");
                 }
@@ -108,7 +109,7 @@ namespace Exercise1.Option1
                     // The child task is, by deafult, detached from its parent task and therefore will not chain a call stack.
                     if (!token.IsCancellationRequested)
                     {
-                        taskFactory.StartNew(GetProcessCustomerAction(cashier, rnd, token), token);
+                        taskFactory.StartNew(GetProcessCustomerAction(cashier, token), token);
                     }
                     else
                     {
@@ -128,7 +129,7 @@ namespace Exercise1.Option1
             {
                 if (disposing)
                 {
-                    tokenSource.Dispose();
+                    cancellationTokenSource.Dispose();
                 }
 
                 if (enqueueCustomersTimer != null)

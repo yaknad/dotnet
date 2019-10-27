@@ -48,6 +48,7 @@
     <Compile Include="Common\ICustomersQueue.cs" />
     <Compile Include="Common\ILogger.cs" />
     <Compile Include="Common\Logger.cs" />
+    <Compile Include="Common\ISleepService.cs" />
     <Compile Include="Common\SleepService.cs" />
     <Compile Include="Common\CustomersQueue.cs" />
     <Compile Include="Common\IStoreManager.cs" />
