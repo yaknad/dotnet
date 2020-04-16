@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Data\\OdeToFood.Data.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Core\\OdeToFood.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Core\\OdeToFood.Core.csproj",
+        "projectName": "OdeToFood.Core",
+        "projectPath": "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Core\\OdeToFood.Core.csproj",
+        "packagesPath": "C:\\Users\\ynadler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ynadler\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://crossriverbank.pkgs.visualstudio.com/_packaging/common/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Data\\OdeToFood.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Data\\OdeToFood.Data.csproj",
+        "projectName": "OdeToFood.Data",
+        "projectPath": "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Data\\OdeToFood.Data.csproj",
+        "packagesPath": "C:\\Users\\ynadler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ynadler\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://crossriverbank.pkgs.visualstudio.com/_packaging/common/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Core\\OdeToFood.Core.csproj": {
+                "projectPath": "C:\\Users\\ynadler\\projects\\git\\dotnet\\courses\\pluralsight\\dotnetcore\\OdeToFood\\OdeToFood\\OdeToFood.Core\\OdeToFood.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
