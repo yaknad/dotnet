@@ -1,0 +1,33 @@
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.deps.json
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.dll
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.pdb
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Core.dll
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Core.pdb
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.csprojAssemblyReference.cache
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.AssemblyInfoInputs.cache
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.AssemblyInfo.cs
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.csproj.CopyComplete
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.dll
+C:\Users\ynadler\projects\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.pdb
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.deps.json
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.dll
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.pdb
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Core.dll
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Core.pdb
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.csprojAssemblyReference.cache
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.AssemblyInfoInputs.cache
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.AssemblyInfo.cs
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.csproj.CopyComplete
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.dll
+C:\Users\ynadler\projects\git\dotnet\courses\pluralsight\dotnetcore\OdeToFood\OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.pdb
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.deps.json
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.dll
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.pdb
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Core.dll
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Core.pdb
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.csprojAssemblyReference.cache
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.AssemblyInfoInputs.cache
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.AssemblyInfo.cs
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.csproj.CopyComplete
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.dll
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.pdb

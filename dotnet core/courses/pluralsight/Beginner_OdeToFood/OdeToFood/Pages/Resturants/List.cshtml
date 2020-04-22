@@ -1,0 +1,59 @@
+﻿@page
+
+@model OdeToFood.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Resturants</h1>
+
+<form method="get">
+    @* for SEARCH operation, a GET verb is ideal, and it sends the params in the query string, enabling to bookmark the page url with the query *@
+    <div class="form-group">
+        <div class="input-group">
+            @*<input type="search" class="form-control" value="" name="searchTerm"/>*@
+            @*<input type="search" class="form-control" value="@Model.SearchTerm" name="SearchTerm" />*@
+            <input type="search" class="form-control" asp-for="SearchTerm" /> @** asp-for supports 2-way binding. It assigns this input's value to the SearchTerm property on requests, and it binds the property's value to the input on response *@
+            <span class="input-group-btn">
+                <button class="btn btn-default">
+                    <i class="fas fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    @foreach (var resturant in Model.Resturants)
+    {
+        <tr>
+            <td>@resturant.Name</td>
+            <td>@resturant.Location</td>
+            <td>@resturant.Cuisine</td>
+            <td>
+                <a class="btn btn-light btn-lg"
+                   asp-page="./Detail" asp-route-resturantId="@resturant.Id">
+                    @*asp-route-X would add a X named parameter to the request.
+            If the target page requires X params as part of the route url (./Resturants/Detail/12),
+            it will add it as a route param. Otherwise, it would add it as a query string param*@
+                    <i class="fas fa-search-plus"></i>
+                </a>
+                <a class="btn btn-light btn-lg"
+                   asp-page="./Edit" asp-route-resturantId="@resturant.Id">
+                    @*asp-route-X would add a X named parameter to the request.
+            If the target page requires X params as part of the route url (./Resturants/Detail/12),
+            it will add it as a route param. Otherwise, it would add it as a query string param*@
+                    <i class="fas fa-search-plus"></i>
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    @Model.LocalMessage
+    <br>
+    @Model.ExternalMessage
+</div>
+
+
