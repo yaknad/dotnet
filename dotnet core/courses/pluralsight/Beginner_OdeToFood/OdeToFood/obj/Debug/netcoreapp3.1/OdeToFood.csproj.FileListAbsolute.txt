@@ -368,3 +368,4 @@ C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_Od
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.csproj.CopyComplete
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.dll
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.pdb
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\Razor\Pages\Resturants\Edit.cshtml.g.cs
