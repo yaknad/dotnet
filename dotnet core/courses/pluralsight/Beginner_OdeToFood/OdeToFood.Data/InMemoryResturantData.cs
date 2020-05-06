@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace OdeToFood.Data
 {
+    // Redundnat - we used it before we developed a Sql Server based data repository
     public class InMemoryResturantData : IResturantData
     {
         private List<Resturant> resturants;
@@ -46,6 +47,13 @@ namespace OdeToFood.Data
                 resturant.Cuisine = updatedResturant.Cuisine;
             }
             return resturant;
+        }
+
+        public Resturant Add(Resturant newResturant)
+        {
+            resturants.Add(newResturant);
+            newResturant.Id = resturants.Max(r => r.Id) + 1;
+            return newResturant;
         }
 
         public int Commit()

@@ -25,10 +25,17 @@ namespace OdeToFood
             this.htmlHelper = htmlHelper;
         }
 
-        public IActionResult OnGet(int resturantId)
+        public IActionResult OnGet(int? resturantId)
         {
             Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
-            Resturant = resturantData.GetById(resturantId);
+            if (resturantId.HasValue)
+            {
+                Resturant = resturantData.GetById(resturantId.Value);
+            }
+            else
+            {
+                Resturant = new Resturant();
+            }
             if(Resturant == null)
             {
                 return RedirectToPage("./NotFound");
@@ -36,19 +43,36 @@ namespace OdeToFood
             return Page();
         }
 
+        //public IActionResult OnGet()
+        //{
+        //    return null;
+        //}
+
         public IActionResult OnPost()
         {
             //ModelState["location"].Errors
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
+            {
+                Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+                return Page();
+            }   
+            
+            if(Resturant.Id > 0)
             {
                 resturantData.Update(Resturant);
-                resturantData.Commit();
-                // PRG pattern: after successful post redirect to another page that uses a GET verb. If we stay in this page, 
-                // it may be refreshed and the POST will re-occure, causing a non intended actino like another payment etc. 
-                return RedirectToPage("./Detail", new { resturantId = Resturant.Id });
-            }            
-            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
-            return Page();
+            }
+            else
+            {
+                resturantData.Add(Resturant);
+            }
+            resturantData.Commit();
+            // PRG (Post Redirect Get) pattern: after successful post redirect to another page that uses a GET verb. If we stay in this page, 
+            // it may be refreshed and the POST will re-occure, causing a non intended action like another payment etc. 
+            // Another important note: don't include in the query string any flag that you don't want the user to bookmark. 
+            // for example, any error flag etc - because when the user will call the page (by the bookmark) he will get an irrelevant error message. 
+
+            TempData["message"] = "Resturant saved!";
+            return RedirectToPage("./Detail", new { resturantId = Resturant.Id });
         }
     }
 }

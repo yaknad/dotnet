@@ -5,6 +5,7 @@ using System.Text;
 
 namespace OdeToFood.Data
 {
+    // Just an experiment - not related to the application
     public class CustomService : ICustomService
     {
         private ILogger<CustomService> logger;

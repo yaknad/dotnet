@@ -10,6 +10,7 @@ namespace OdeToFood.Data
         IEnumerable<Resturant> GetResturantByName(string name);
         Resturant GetById(int id);
         Resturant Update(Resturant updatedResturant);
+        Resturant Add(Resturant resturant);
         int Commit();
     }
 }

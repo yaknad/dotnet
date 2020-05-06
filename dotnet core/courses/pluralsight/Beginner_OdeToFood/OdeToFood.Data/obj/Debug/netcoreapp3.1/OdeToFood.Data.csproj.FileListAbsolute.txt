@@ -31,3 +31,5 @@ C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_Od
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.csproj.CopyComplete
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.dll
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\obj\Debug\netcoreapp3.1\OdeToFood.Data.pdb
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.runtimeconfig.json
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood.Data\bin\Debug\netcoreapp3.1\OdeToFood.Data.runtimeconfig.dev.json
