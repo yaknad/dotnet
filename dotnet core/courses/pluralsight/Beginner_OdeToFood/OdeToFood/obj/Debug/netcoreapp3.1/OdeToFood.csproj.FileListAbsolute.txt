@@ -344,7 +344,6 @@ C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_Od
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.csprojAssemblyReference.cache
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\staticwebassets\OdeToFood.StaticWebAssets.Manifest.cache
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\staticwebassets\OdeToFood.StaticWebAssets.xml
-C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.RazorAssemblyInfo.cache
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.RazorAssemblyInfo.cs
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.AssemblyInfoInputs.cache
@@ -390,3 +389,7 @@ C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_Od
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\ynadler\projects\git\dotnet\dotnet core\courses\pluralsight\Beginner_OdeToFood\OdeToFood\obj\Debug\netcoreapp3.1\OdeToFood.MvcApplicationPartsAssemblyInfo.cache

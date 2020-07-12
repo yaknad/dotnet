@@ -32,8 +32,8 @@ namespace OdeToFood
             services.AddSingleton(typeof(ILogger<>), typeof(RolodexLogger<>));
             services.AddSingleton<ICustomService, CustomService>();
 
-
             services.AddSingleton<IResturantData, InMemoryResturantData>();
+
             services.AddDbContextPool<OdeToFoodDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));
