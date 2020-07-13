@@ -1,6 +1,4 @@
-Brix/Exercise1/Exercise1/bin/
-Brix/Exercise1/Exercise1/obj/
-Brix/Exercise1/.vs/
-Brix/Exercise2/Exercise2/bin/
-Brix/Exercise2/Exercise2/obj/
-Brix/Exercise2/.vs/
+**/bin/**
+**/obj/**
+**/.vs/**
+
